@@ -1,36 +1,47 @@
 body{
+    /* Reseting the margin and padding to 0 to ensure consistent spacing across browsers */
     padding: 0;
     margin: 0;
+    /*font family taken from figma */
     font-family: 'DotGothic16';
+    /* box-sizing to include padding and borders in an element's total width and height */
     box-sizing: border-box;
 }
 .header{
+    /* Uses flexbox to layout the header items horizontally*/
     display: flex;
+    /* justify-content ensures the space between header items is evenly distributed */
     justify-content: space-between;
+    /* Adds a 1px solid black border at the bottom of the header */
     border-bottom: 1px solid black;
     padding: 10px 10px;    
 }
 .header2{
+    /* Uses flexbox to lay out its children evenly across the container */
     display: flex;
     justify-content: space-evenly;
+    /* Adds a gap of 10px between child elements */
     gap: 10px;
 }
-.main{
+.topic{
     padding: 20px;
 }
-.main-header{
+.topic-header{
+    /* Centers the text */
     text-align: center;
     font-weight: 400;
     font-size: x-large;
 
 }
-.main-header img{
+.topic-header img{
+    /* Makes images inside .topic-header so that elements stretch to fit 100% of the width */
     width: 100%;
-    border-radius: 20px;
 }
-.main-grid{
+.main-gallery{
     display: grid;
+    /* Uses grid layout with 3 equal-width columns (repeat(3, 1fr)), meaning 3 columns of equal size */
     grid-template-columns: repeat(3,1fr);
+    /* adds space between grid items */
     grid-gap: 1.5rem;
     
     
@@ -42,31 +53,66 @@ body{
     
 }
 .item img{
+    /* Ensures images inside .item stretch to fill 100% of their parent container's width */
     width: 100%;
 }
-.main-caption{
-    display: flex;
-    justify-content: space-between;
-    width: 50vw;
-    margin-top: 4em;
-    text-align: center;
-    margin-left: 5em;
+.description { display: flex;
+    /* Uses flexbox to center content both horizontally and vertically */
+    /* Sets the width to 50% of the viewport width (50vw), giving a fluid layout */
+     text-align: center; width: 50vw;
+      margin-top: 4em;
+      /* to allign item at center */
+       justify-content: center;
+        align-items: center; 
+        margin: auto;
+    padding: 48px;}
+.pointers{
+    padding: 48px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 48px 0px;
 }
+.list li{
+    /* Removes bullet points from list items */
+    list-style-type: none;
+    font-size:10px;
+    font-family: archivo;
+    font-weight: 200;    
+}
+
+
+.point-head{
+    font-size: 16px;
+    font-weight: 400px;
+
+}
+.list ul{
+    display: grid;
+    /* Defines a grid with 2 columns (repeat(2, 1fr)) and 5 rows of equal height (repeat(5, 1fr)) */
+    grid-template-rows: repeat(5,1fr);
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 20px;
+    row-gap: 11px;
+}
+
 .main-footer{
     margin-top: 4em;
     display: grid;
+    /* Defines a grid layout with 3 columns: 2 equal-width columns (1fr 1fr) and a wider column (2fr) */
     grid-template-columns: 1fr 1fr 2fr;
+    /* Adds a bottom border  */
     border-bottom: 1px solid black;
 }
 .footer1{
     
     font-size:larger;
+    text-align: left;
 }
 .footer2{
     font-family: 'Archivo';
     font-size: small;
     font-weight: lighter;
-   
+    text-align: right;  
 }
 .footer{
     margin-top: 4em;
@@ -78,6 +124,7 @@ body{
     
 }
 .box{
+    /* Centers the content inside the .box element using flexbox */
     display: flex;
     justify-content: center;
     
@@ -89,6 +136,7 @@ body{
     justify-content: center;
     align-items: center;
     font-family: 'Archivo';
+    /* Adds a black border, rounded corners, and a margin of 1rem */
     border: 1px solid black;
     border-radius: 5px;
     margin: 1rem;
@@ -97,6 +145,7 @@ input{
     background-color:#2419F3;
     color: white;
     width: 20rem;
+    /* Applies rounded corners with border-radius */
     border-radius: 8px;
     line-height: 1.5;
 }
@@ -106,6 +155,7 @@ input{
     font-size: small;
 }
 .page-footer{
+    /* Uses flexbox to distribute space between elements and adds a top margin of 4rem*/
     display: flex;
     justify-content: space-between;
     margin: 4rem 0 0 0;
@@ -116,4 +166,100 @@ input{
     border-radius: 5px;
     padding: 10px;
     font-size: medium;
+}
+
+/* to make it responsive */
+/* max-width: 1200px (larger tablets or small desktops) */
+
+/* /* Reduces header padding. */
+/* Hides .header2 (likely secondary navigation or links). */
+/* Changes gallery layout to use */ 
+@media (max-width: 1200px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .header2 {
+        display: none; 
+    }
+
+    .header2 div {
+        margin-left: 0;
+    }
+
+    .topic-header h1 {
+        font-size: 2rem;
+    }
+
+    .main-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Reduce column width */
+    }
+
+    .footer-box {
+        width: 15px;
+        height: 15px;
+    }
+
+    #follow {
+        font-size: 1.125rem;
+    }
+}
+/* max-width: 768px (tablets) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header2 {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .header2 div {
+        margin: 0.5rem 0;
+        font-size: 1.125rem;
+    }
+
+    .main-gallery {
+        grid-template-columns: 1fr; 
+        padding: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .pointers .list ul li {
+        font-size: 0.875rem;
+    }
+
+    .footer-box {
+        width: 12px;
+        height: 12px;
+    }
+
+    .page-footer {
+        font-size: 0.875rem;
+    }
+}
+/* max-width: 480px (smartphones) */
+@media (max-width: 480px) {
+    .topic-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .item h4 {
+        font-size: 1rem;
+    }
+
+    .footer-box {
+        width: 10px;
+        height: 10px;
+    }
+
+    .footer {
+        padding: 1rem 0.5rem;
+    }
 }
